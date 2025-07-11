@@ -27,12 +27,12 @@ actor RemoteBetService: BetService {
     ]
 
     func loadBets() async throws -> [Bet] {
-        try await Task.sleep(nanoseconds: RemoteBetService.delay)
+//        try await Task.sleep(nanoseconds: RemoteBetService.delay)
         return bets
     }
 
     func saveBets(_ bets: [Bet]) async throws {
-        try await Task.sleep(nanoseconds: RemoteBetService.delay)
+//        try await Task.sleep(nanoseconds: RemoteBetService.delay)
         self.bets = bets
     }
 }

@@ -12,7 +12,7 @@ public class BetRepository {
 
     public func updateOdds() async throws -> [Bet] {
         var bets = try await service.loadBets()
-        
+
         for i in 0 ..< bets.count {
             if bets[i].name != "Player performance", bets[i].name != "Total score" {
                 if bets[i].quality > 0 {
