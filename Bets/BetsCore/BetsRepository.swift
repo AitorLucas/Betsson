@@ -22,7 +22,7 @@ public class BetRepository {
 
     public func updateOdds() async throws -> [Bet] {
         var bets = try await service.loadBets()
-        let betsInit = bets
+//        let betsInit = bets
 
         bets = ruleProcessor.process(bets: bets)
 

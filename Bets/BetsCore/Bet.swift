@@ -9,7 +9,7 @@ public struct Bet: Equatable {
     public let name: String
     public var sellIn: Int
     public var quality: Int
-    internal let type: BetType
+    public let type: BetType
 
     public init(name: String, sellIn: Int, quality: Int) {
         self.name = name
@@ -19,7 +19,7 @@ public struct Bet: Equatable {
     }
 }
 
-internal enum BetType: String {
+public enum BetType: String {
     case winningTeam = "Winning team"
     case totalScore = "Total score"
     case playerPerformance = "Player performance"

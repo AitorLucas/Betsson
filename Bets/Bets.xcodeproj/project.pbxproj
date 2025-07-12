@@ -8,12 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5B9530902E21AD1D0085FEFB /* BetRuleProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95308F2E21AD1C0085FEFB /* BetRuleProcessor.swift */; };
+		5B9530A92E21B9670085FEFB /* BetsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9530A82E21B9670085FEFB /* BetsRepositoryTests.swift */; };
 		B5C0FD5C29E69206009AD7E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD5B29E69206009AD7E4 /* AppDelegate.swift */; };
 		B5C0FD5E29E69206009AD7E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD5D29E69206009AD7E4 /* SceneDelegate.swift */; };
-		B5C0FD6029E69206009AD7E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD5F29E69206009AD7E4 /* ViewController.swift */; };
-		B5C0FD6329E69206009AD7E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FD6129E69206009AD7E4 /* Main.storyboard */; };
-		B5C0FD6529E69208009AD7E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FD6429E69208009AD7E4 /* Assets.xcassets */; };
-		B5C0FD6829E69208009AD7E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5C0FD6629E69208009AD7E4 /* LaunchScreen.storyboard */; };
 		B5C0FD7C29E694E1009AD7E4 /* BetsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C0FD7429E694E0009AD7E4 /* BetsCore.framework */; };
 		B5C0FD8329E694E1009AD7E4 /* BetsCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD8229E694E1009AD7E4 /* BetsCoreTests.swift */; };
 		B5C0FD8429E694E1009AD7E4 /* BetsCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5C0FD7629E694E0009AD7E4 /* BetsCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,7 +18,6 @@
 		B5C0FD8829E694E1009AD7E4 /* BetsCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5C0FD7429E694E0009AD7E4 /* BetsCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B5C0FD9129E6950A009AD7E4 /* BetsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD9029E6950A009AD7E4 /* BetsRepository.swift */; };
 		B5C0FD9329E69531009AD7E4 /* Bet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD9229E69531009AD7E4 /* Bet.swift */; };
-		B5C0FD9529E69625009AD7E4 /* RemoteBetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD9429E69625009AD7E4 /* RemoteBetService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,13 +60,10 @@
 
 /* Begin PBXFileReference section */
 		5B95308F2E21AD1C0085FEFB /* BetRuleProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetRuleProcessor.swift; sourceTree = "<group>"; };
+		5B9530A82E21B9670085FEFB /* BetsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetsRepositoryTests.swift; sourceTree = "<group>"; };
 		B5C0FD5829E69206009AD7E4 /* Bets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FD5B29E69206009AD7E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5C0FD5D29E69206009AD7E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B5C0FD5F29E69206009AD7E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B5C0FD6229E69206009AD7E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B5C0FD6429E69208009AD7E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B5C0FD6729E69208009AD7E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B5C0FD6929E69208009AD7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B5C0FD7429E694E0009AD7E4 /* BetsCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BetsCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FD7629E694E0009AD7E4 /* BetsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BetsCore.h; sourceTree = "<group>"; };
@@ -78,11 +71,15 @@
 		B5C0FD8229E694E1009AD7E4 /* BetsCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetsCoreTests.swift; sourceTree = "<group>"; };
 		B5C0FD9029E6950A009AD7E4 /* BetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetsRepository.swift; sourceTree = "<group>"; };
 		B5C0FD9229E69531009AD7E4 /* Bet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
-		B5C0FD9429E69625009AD7E4 /* RemoteBetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBetService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		5B9530912E21B0370085FEFB /* Rules */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Rules; sourceTree = "<group>"; };
+		5B9530AA2E21BAD20085FEFB /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+		5B9530AF2E21BB2B0085FEFB /* Services */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Services; sourceTree = "<group>"; };
+		5B9530F22E21BBE20085FEFB /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
+		5BA2A2872E22BDCF00A67F98 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
+		5BA2A2912E22CF0A00A67F98 /* Scenes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Scenes; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,13 +132,13 @@
 		B5C0FD5A29E69206009AD7E4 /* Bets */ = {
 			isa = PBXGroup;
 			children = (
+				5BA2A2912E22CF0A00A67F98 /* Scenes */,
+				5BA2A2872E22BDCF00A67F98 /* Extensions */,
+				5B9530F22E21BBE20085FEFB /* Utils */,
+				5B9530AF2E21BB2B0085FEFB /* Services */,
+				5B9530AA2E21BAD20085FEFB /* Resources */,
 				B5C0FD5B29E69206009AD7E4 /* AppDelegate.swift */,
 				B5C0FD5D29E69206009AD7E4 /* SceneDelegate.swift */,
-				B5C0FD5F29E69206009AD7E4 /* ViewController.swift */,
-				B5C0FD9429E69625009AD7E4 /* RemoteBetService.swift */,
-				B5C0FD6129E69206009AD7E4 /* Main.storyboard */,
-				B5C0FD6429E69208009AD7E4 /* Assets.xcassets */,
-				B5C0FD6629E69208009AD7E4 /* LaunchScreen.storyboard */,
 				B5C0FD6929E69208009AD7E4 /* Info.plist */,
 			);
 			path = Bets;
@@ -163,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B5C0FD8229E694E1009AD7E4 /* BetsCoreTests.swift */,
+				5B9530A82E21B9670085FEFB /* BetsRepositoryTests.swift */,
 			);
 			path = BetsCoreTests;
 			sourceTree = "<group>";
@@ -194,6 +192,13 @@
 			);
 			dependencies = (
 				B5C0FD8629E694E1009AD7E4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5B9530AA2E21BAD20085FEFB /* Resources */,
+				5B9530AF2E21BB2B0085FEFB /* Services */,
+				5B9530F22E21BBE20085FEFB /* Utils */,
+				5BA2A2872E22BDCF00A67F98 /* Extensions */,
+				5BA2A2912E22CF0A00A67F98 /* Scenes */,
 			);
 			name = Bets;
 			productName = Bets;
@@ -288,9 +293,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5C0FD6829E69208009AD7E4 /* LaunchScreen.storyboard in Resources */,
-				B5C0FD6529E69208009AD7E4 /* Assets.xcassets in Resources */,
-				B5C0FD6329E69206009AD7E4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,8 +317,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5C0FD6029E69206009AD7E4 /* ViewController.swift in Sources */,
-				B5C0FD9529E69625009AD7E4 /* RemoteBetService.swift in Sources */,
 				B5C0FD5C29E69206009AD7E4 /* AppDelegate.swift in Sources */,
 				B5C0FD5E29E69206009AD7E4 /* SceneDelegate.swift in Sources */,
 			);
@@ -337,6 +337,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B5C0FD8329E694E1009AD7E4 /* BetsCoreTests.swift in Sources */,
+				5B9530A92E21B9670085FEFB /* BetsRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,25 +360,6 @@
 			targetProxy = B5C0FD8529E694E1009AD7E4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		B5C0FD6129E69206009AD7E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5C0FD6229E69206009AD7E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		B5C0FD6629E69208009AD7E4 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B5C0FD6729E69208009AD7E4 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		B5C0FD6A29E69208009AD7E4 /* Debug */ = {
@@ -507,7 +489,6 @@
 				INFOPLIST_FILE = Bets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -540,7 +521,6 @@
 				INFOPLIST_FILE = Bets/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

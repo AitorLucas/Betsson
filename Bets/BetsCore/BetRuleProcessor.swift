@@ -8,9 +8,10 @@
 import Foundation
 
 public class BetRuleProcessor {
+
     private var ruleSet: [BetType: any BetRule.Type] = [
-        .totalScore: TotalScoreRule.self,
         .playerPerformance: PlayerPerformanceRule.self,
+        .totalScore: TotalScoreRule.self,
         .yellowCards: YellowCardsRule.self,
         .winningTeam: WinningTeamRule.self
     ]
@@ -26,6 +27,7 @@ public class BetRuleProcessor {
             return mutableBet
         }
     }
+
 }
 
 // MARK: - BetRule
@@ -34,14 +36,3 @@ public protocol BetRule {
     static func apply(to bet: inout Bet)
 }
 
-// extension BetRule {
-//    // MARK: Hashable
-//    func hash(into hasher: inout Hasher) {
-//        hasher.combine(Self.appliedTo)
-//    }
-//
-//    // MARK: Equatable
-//    static func ==(lhs: Self, rhs: Self) -> Bool {
-//        Self.appliedTo == Self.appliedTo
-//    }
-// }
