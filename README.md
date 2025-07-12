@@ -10,7 +10,9 @@ DESCRIPTION
 - [x] StandartRule to every new Bet
 
 ### Add unit tests for BetsRepository
-- [x] ABC
+- [x] Create mock for Service
+- [x] Create rules uitests
+- [x] Create respository uitests
 
 ### Refactor the Bets target using the MVVM architecture.
 - [x] Organize Project and cleanup

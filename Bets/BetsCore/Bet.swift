@@ -17,6 +17,14 @@ public struct Bet: Equatable {
         self.quality = quality
         self.type = BetType(rawValue: name) ?? .defaultType
     }
+
+//    internal mutating func updateSellIn(value: Int) {
+//        self.sellIn = value
+//    }
+//
+//    internal mutating func updateQuality(value: Int) {
+//        self.quality = value
+//    }
 }
 
 public enum BetType: String {

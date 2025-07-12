@@ -12,7 +12,6 @@
 		B5C0FD5C29E69206009AD7E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD5B29E69206009AD7E4 /* AppDelegate.swift */; };
 		B5C0FD5E29E69206009AD7E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD5D29E69206009AD7E4 /* SceneDelegate.swift */; };
 		B5C0FD7C29E694E1009AD7E4 /* BetsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C0FD7429E694E0009AD7E4 /* BetsCore.framework */; };
-		B5C0FD8329E694E1009AD7E4 /* BetsCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD8229E694E1009AD7E4 /* BetsCoreTests.swift */; };
 		B5C0FD8429E694E1009AD7E4 /* BetsCore.h in Headers */ = {isa = PBXBuildFile; fileRef = B5C0FD7629E694E0009AD7E4 /* BetsCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B5C0FD8729E694E1009AD7E4 /* BetsCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C0FD7429E694E0009AD7E4 /* BetsCore.framework */; };
 		B5C0FD8829E694E1009AD7E4 /* BetsCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B5C0FD7429E694E0009AD7E4 /* BetsCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -68,7 +67,6 @@
 		B5C0FD7429E694E0009AD7E4 /* BetsCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BetsCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5C0FD7629E694E0009AD7E4 /* BetsCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BetsCore.h; sourceTree = "<group>"; };
 		B5C0FD7B29E694E1009AD7E4 /* BetsCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetsCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B5C0FD8229E694E1009AD7E4 /* BetsCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetsCoreTests.swift; sourceTree = "<group>"; };
 		B5C0FD9029E6950A009AD7E4 /* BetsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetsRepository.swift; sourceTree = "<group>"; };
 		B5C0FD9229E69531009AD7E4 /* Bet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,6 +78,8 @@
 		5B9530F22E21BBE20085FEFB /* Utils */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Utils; sourceTree = "<group>"; };
 		5BA2A2872E22BDCF00A67F98 /* Extensions */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Extensions; sourceTree = "<group>"; };
 		5BA2A2912E22CF0A00A67F98 /* Scenes */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Scenes; sourceTree = "<group>"; };
+		5BA2A2DA2E22E10200A67F98 /* Mocks */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Mocks; sourceTree = "<group>"; };
+		5BA2A2DD2E22E2D900A67F98 /* Rules */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Rules; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,7 +159,8 @@
 		B5C0FD8129E694E1009AD7E4 /* BetsCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				B5C0FD8229E694E1009AD7E4 /* BetsCoreTests.swift */,
+				5BA2A2DD2E22E2D900A67F98 /* Rules */,
+				5BA2A2DA2E22E10200A67F98 /* Mocks */,
 				5B9530A82E21B9670085FEFB /* BetsRepositoryTests.swift */,
 			);
 			path = BetsCoreTests;
@@ -239,6 +240,10 @@
 			dependencies = (
 				B5C0FD7E29E694E1009AD7E4 /* PBXTargetDependency */,
 				B5C0FD8029E694E1009AD7E4 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				5BA2A2DA2E22E10200A67F98 /* Mocks */,
+				5BA2A2DD2E22E2D900A67F98 /* Rules */,
 			);
 			name = BetsCoreTests;
 			productName = BetsCoreTests;
@@ -336,7 +341,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5C0FD8329E694E1009AD7E4 /* BetsCoreTests.swift in Sources */,
 				5B9530A92E21B9670085FEFB /* BetsRepositoryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
