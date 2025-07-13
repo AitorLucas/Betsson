@@ -11,7 +11,7 @@ import BetsCore
 internal final class BetsListViewController: UIViewController {
 
     // MARK: Properties
-    private let repository = BetRepository(service: RemoteBetService())
+    private let viewModel = BetsListViewModel(repository: BetRepository(service: RemoteBetService()))
     private lazy var customView: BetsListView = {
         let view = BetsListView()
         view.delegate = self
@@ -30,24 +30,14 @@ internal final class BetsListViewController: UIViewController {
 
     internal override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
         loadData()
     }
 
     // MARK: Methods
     @objc
     private func loadData() {
-        customView.startLoading()
-        Task {
-            do {
-                let items = try await self.repository.updateOdds()
-                await MainActor.run { [weak self] in
-                    let viewModel = BetsListModel(bets: items)
-                    self?.customView.updateView(with: viewModel)
-                }
-            } catch {
-                customView.showError()
-            }
-        }
+        viewModel.loadData()
     }
 
 }
@@ -55,8 +45,25 @@ internal final class BetsListViewController: UIViewController {
 // MARK: - BetsListView Delegate
 extension BetsListViewController: BetsListViewDelegate {
 
-    internal func didSelect(cellModel: any BetsListCellModelProtocol) {
-        print("Selected: \(cellModel)")
+    internal func didSelectItem(at index: IndexPath) {
+        guard let selectedBet = viewModel.betForIndex(index.row) else { return }
+        print("Selected Bet: \(selectedBet)")
+    }
+
+}
+
+// MARK: - BetsListViewModel Delegate
+extension BetsListViewController: BetsListViewModelDelegate {
+
+    func didUpdateState(_ state: BetsListViewModel.State) {
+        switch state {
+        case .content(let cellModels):
+            customView.updateView(with: cellModels)
+        case .loading:
+            customView.startLoading()
+        case .error:
+            customView.showError()
+        }
     }
 
 }

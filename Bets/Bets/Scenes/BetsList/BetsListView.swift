@@ -9,7 +9,7 @@ import UIKit
 import BetsCore
 
 internal protocol BetsListViewDelegate: AnyObject {
-    func didSelect(cellModel: BetsListCellModelProtocol)
+    func didSelectItem(at index: IndexPath)
 }
 
 internal final class BetsListView: UIView {
@@ -44,7 +44,7 @@ internal final class BetsListView: UIView {
     }()
 
     // MARK: Properties
-    private var viewModel: BetsListModelProtocol?
+    private var viewModel: [BetsListCellModelProtocol]?
     private var currentState: ViewState?
     private var transitionID = UUID()
     internal weak var delegate: BetsListViewDelegate?
@@ -102,7 +102,7 @@ internal final class BetsListView: UIView {
         transition(to: .error)
     }
 
-    internal func updateView(with viewModel: BetsListModelProtocol) {
+    internal func updateView(with viewModel: [BetsListCellModelProtocol]) {
         transition(to: .content)
         self.viewModel = viewModel
         collectionView.reloadData()
@@ -128,9 +128,9 @@ extension BetsListView: ViewCode {
 
     internal func setupConstraints() {
         NSLayoutConstraint.activate([
-            collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             collectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
@@ -152,11 +152,11 @@ extension BetsListView: ViewCode {
 extension BetsListView: UICollectionViewDataSource {
 
     internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.cellModels.count ?? 0
+        return viewModel?.count ?? 0
     }
 
     internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cellModel = viewModel?.cellModels[indexPath.item],
+        guard let cellModel = viewModel?[indexPath.item],
               let cell = collectionView.dequeueCell(type: BetsListCell.self, for: indexPath) else {
             return UICollectionViewCell()
         }
@@ -170,8 +170,7 @@ extension BetsListView: UICollectionViewDataSource {
 extension BetsListView: UICollectionViewDelegate {
 
     internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cellModel = viewModel?.cellModels[indexPath.item] else { return }
-        delegate?.didSelect(cellModel: cellModel)
+        delegate?.didSelectItem(at: indexPath)
     }
 
 }

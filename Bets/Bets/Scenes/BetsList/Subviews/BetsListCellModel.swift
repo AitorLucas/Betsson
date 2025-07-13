@@ -9,17 +9,23 @@ import Foundation
 import BetsCore
 
 internal protocol BetsListCellModelProtocol {
-    var title: String { get }
+    var nameText: String { get }
     var imageName: String { get }
+    var sellInText: String { get }
+    var qualityText: String { get }
 }
 
 internal struct BetsListCellModel: BetsListCellModelProtocol {
 
-    internal let title: String
+    internal let nameText: String
     internal let imageName: String
+    internal let sellInText: String
+    internal let qualityText: String
 
     internal init(bet: Bet) {
-        self.title = bet.name
+        self.nameText = bet.name
+        self.sellInText = "Sell-In: \(bet.sellIn)"
+        self.qualityText = "Quality: \(bet.quality)"
 
         switch bet.type {
         case .winningTeam:
