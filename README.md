@@ -27,7 +27,15 @@ DESCRIPTION
 - [x] Remove Service Singleton
 
 ### Extras
+- [x] Swiftlint
 - [x] Add icon to Cell
 - [x] Add refresh button
 - [x] Improve loading animation
+- [x] Add selection to Cell
+- [x] Add error message
+
+## Author
+
+Aitor Eler Lucas
+
 
