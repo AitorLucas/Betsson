@@ -58,4 +58,3 @@ final class PlayerPerformanceRuleTests: XCTestCase {
         XCTAssertEqual(bet.quality, 50)
     }
 }
-

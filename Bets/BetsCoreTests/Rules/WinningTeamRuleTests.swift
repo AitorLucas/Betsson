@@ -35,4 +35,3 @@ final class WinningTeamRuleTests: XCTestCase {
 //        XCTAssertEqual(bet, original)
     }
 }
-

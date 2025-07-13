@@ -78,4 +78,3 @@ final class TotalScoreRuleTests: XCTestCase {
         XCTAssertEqual(bet.quality, 50)
     }
 }
-

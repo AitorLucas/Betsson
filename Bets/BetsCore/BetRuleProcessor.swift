@@ -35,4 +35,3 @@ public class BetRuleProcessor {
 public protocol BetRule {
     static func apply(to bet: inout Bet)
 }
-

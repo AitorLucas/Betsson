@@ -50,25 +50,25 @@ extension BetsListCell: ViewCode {
     internal func configureView() {
         backgroundColor = .systemBackground
     }
-    
+
     internal func buildHierarchy() {
         addSubview(titleLabel)
         addSubview(imageView)
     }
-    
+
     internal func setupConstraints() {
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.heightAnchor.constraint(equalToConstant: 22),
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
         ])
 
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 16),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16)
         ])
     }
 

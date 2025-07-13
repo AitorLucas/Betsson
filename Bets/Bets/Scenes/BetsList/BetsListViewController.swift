@@ -21,7 +21,7 @@ final internal class BetsListViewController: UIViewController {
     // MARK: Life Cycle
     internal override func loadView() {
         self.view = customView
-        
+
         title = "Odds"
         let reloadButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(loadData))
         navigationItem.rightBarButtonItem = reloadButton
@@ -63,4 +63,3 @@ extension BetsListViewController: BetsListViewDelegate {
     }
 
 }
-

@@ -96,13 +96,13 @@ extension BetsListView: ViewCode {
         collectionView.dataSource = self
         collectionView.delegate = self
     }
-    
+
     internal func buildHierarchy() {
         addSubview(collectionView)
         addSubview(activityIndicatorView)
         addSubview(errorLabel)
     }
-    
+
     internal func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -124,7 +124,6 @@ extension BetsListView: ViewCode {
     }
 
 }
-
 
 // MARK: - UICollectionView DataSource
 extension BetsListView: UICollectionViewDataSource {

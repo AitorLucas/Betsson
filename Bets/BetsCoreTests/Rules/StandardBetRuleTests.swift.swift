@@ -65,4 +65,3 @@ final class StandardBetRuleTests: XCTestCase {
         XCTAssertEqual(bet.sellIn, 2)
     }
 }
-

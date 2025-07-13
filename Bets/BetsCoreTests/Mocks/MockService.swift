@@ -12,7 +12,7 @@ final class MockService: BetService {
     var betsToLoad: [Bet] = []
     var savedBets: [Bet] = []
 
-    func saveOriginalsBets()  {
+    func saveOriginalsBets() {
         betsToLoad = [
             Bet(name: "Winning team", sellIn: 8, quality: 15),
             Bet(name: "Total score", sellIn: 5, quality: 26),
