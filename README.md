@@ -1,3 +1,5 @@
+[![iOS starter workflow](https://github.com/AitorLucas/Betsson/actions/workflows/ios.yml/badge.svg)](https://github.com/AitorLucas/Betsson/actions/workflows/ios.yml)
+
 # Betsson
 
 DESCRIPTION
