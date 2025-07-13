@@ -35,11 +35,9 @@ final internal class BetsListViewController: UIViewController {
     }
 
     // MARK: Methods
-
     @objc
     private func loadData() {
         customView.startLoading()
-
         Task {
             do {
                 let items = try await self.repository.updateOdds()
@@ -49,7 +47,8 @@ final internal class BetsListViewController: UIViewController {
                     self?.customView.stopLoading()
                 }
             } catch {
-                print("Error fetching items.")
+                customView.stopLoading()
+                customView.showError()
             }
         }
     }
@@ -57,8 +56,11 @@ final internal class BetsListViewController: UIViewController {
 }
 
 // MARK: - BetsListView Delegate
-
 extension BetsListViewController: BetsListViewDelegate {
+
+    func didSelect(cellModel: any BetsListCellModelProtocol) {
+        print("Selected: \(cellModel)")
+    }
 
 }
 

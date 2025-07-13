@@ -25,8 +25,6 @@ internal final class BetsListCell: UICollectionViewCell {
         return imageView
     }()
 
-    // MARK: Properties
-
     // MARK: Life Cycle
     @available(*, unavailable)
     internal required init?(coder: NSCoder) {
@@ -47,7 +45,6 @@ internal final class BetsListCell: UICollectionViewCell {
 }
 
 // MARK: - View Code
-
 extension BetsListCell: ViewCode {
 
     internal func configureView() {
