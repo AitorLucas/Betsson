@@ -47,17 +47,6 @@ final class PlayerPerformanceRuleTests: XCTestCase {
         XCTAssertEqual(bet.sellIn, -1)
     }
 
-    func test_qualityDoesNotExceedFifty() {
-        // Given
-        var bet = Bet(name: "Player performance", sellIn: 0, quality: 49)
-
-        // When
-        sut.apply(to: &bet)
-
-        // Then
-        XCTAssertEqual(bet.quality, 50)
-    }
-
     func test_qualityRemains50_whenAlreadyAtMaxBeforeExpiration() {
         // Given
         var bet = Bet(name: "Player performance", sellIn: 5, quality: 50)
@@ -70,7 +59,7 @@ final class PlayerPerformanceRuleTests: XCTestCase {
         XCTAssertEqual(bet.sellIn, 4)
     }
 
-    func test_qualityIncreasesBy1_whenAt49_andExpired() {
+    func test_qualityIncreasesBy1_whenAt49AndExpired() {
         // Given
         var bet = Bet(name: "Player performance", sellIn: 0, quality: 49)
 

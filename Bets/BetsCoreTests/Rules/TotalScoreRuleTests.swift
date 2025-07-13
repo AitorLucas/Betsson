@@ -89,7 +89,7 @@ final class TotalScoreRuleTests: XCTestCase {
         XCTAssertEqual(bet.quality, 50)
     }
 
-    func test_sellInDecreasesBy1_eachDay() {
+    func test_sellInDecreasesBy1() {
         // Given
         var bet = Bet(name: "Total score", sellIn: 7, quality: 20)
 

@@ -23,7 +23,7 @@ final class BetRepositoryTests: XCTestCase {
         service = nil
     }
 
-    func test_updateOdds_appliesRulesAndSavesThem_GivenValues() async throws {
+    func test_updateOdds_appliesRulesAndSavesThem_givenValues() async throws {
         // Given
         service.betsToLoad = [
             Bet(name: "Player performance", sellIn: 1, quality: 48),
@@ -40,7 +40,7 @@ final class BetRepositoryTests: XCTestCase {
         XCTAssertEqual(service.savedBets, updated)
     }
 
-    func test_updateOdds_appliesRulesAndSavesThem_OriginalValues() async throws {
+    func test_updateOdds_appliesRulesAndSavesThem_originalValues() async throws {
         // Given
         service.saveOriginalsBets()
 
@@ -52,7 +52,7 @@ final class BetRepositoryTests: XCTestCase {
         XCTAssertEqual(service.savedBets, updated)
     }
 
-    func test_legacyProcessorIsEqualToNew_OriginalValues() async throws {
+    func test_legacyProcessorIsEqualToNew_originalValues() async throws {
         // Given
         let legacyRepository = BetRepository(service: service, ruleProcessor: LegacyRuleProcessor())
         service.saveOriginalsBets()
@@ -65,7 +65,7 @@ final class BetRepositoryTests: XCTestCase {
         XCTAssertEqual(sutUpdated, legacyUpdated)
     }
 
-    func test_legacyProcessorIsEqualToNew_RandomValues() async throws {
+    func test_legacyProcessorIsEqualToNew_randomValues() async throws {
         // Given
         let legacyRepository = BetRepository(service: service, ruleProcessor: LegacyRuleProcessor())
         service.betsToLoad = [
