@@ -64,4 +64,41 @@ final class StandardBetRuleTests: XCTestCase {
         XCTAssertEqual(bet.quality, 9)
         XCTAssertEqual(bet.sellIn, 2)
     }
+
+    func test_qualityRemainsZero_whenAlreadyZeroAndNotExpired() {
+        // Given
+        var bet = Bet(name: "Shots on goal", sellIn: 2, quality: 0)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, 0)
+        XCTAssertEqual(bet.sellIn, 1)
+    }
+
+    func test_qualityRemainsZero_whenAlreadyZeroAndExpired() {
+        // Given
+        var bet = Bet(name: "Pass accuracy", sellIn: 0, quality: 0)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, 0)
+        XCTAssertEqual(bet.sellIn, -1)
+    }
+
+    func test_qualityDecreasesBy2_whenAlreadyExpired() {
+        // Given
+        var bet = Bet(name: "Throw-ins", sellIn: -1, quality: 10)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, 8)
+        XCTAssertEqual(bet.sellIn, -2)
+    }
+
 }

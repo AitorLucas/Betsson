@@ -77,4 +77,39 @@ final class TotalScoreRuleTests: XCTestCase {
         // Then
         XCTAssertEqual(bet.quality, 50)
     }
+
+    func test_qualityRemainsFifty_whenAtMax() {
+        // Given
+        var bet = Bet(name: "Total score", sellIn: 10, quality: 50)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, 50)
+    }
+
+    func test_sellInDecreasesBy1_eachDay() {
+        // Given
+        var bet = Bet(name: "Total score", sellIn: 7, quality: 20)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.sellIn, 6)
+    }
+
+    func test_qualityRemainsZero_whenAlreadyExpired() {
+        // Given
+        var bet = Bet(name: "Total score", sellIn: -1, quality: 25)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, 0)
+        XCTAssertEqual(bet.sellIn, -2)
+    }
+
 }

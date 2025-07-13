@@ -23,15 +23,43 @@ final class WinningTeamRuleTests: XCTestCase {
         originalBetValue = nil
     }
 
-    func test_valuesRemainUnchanged() {
+    func test_valuesRemainUnchanged_OriginalValue() {
         // Given
-        let original = originalBetValue
+        let original = originalBetValue!
         var bet = original
 
         // When
-//        sut.apply(to: (&bet)!)
-//
-//        // Then
-//        XCTAssertEqual(bet, original)
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, original.quality)
+        XCTAssertEqual(bet.sellIn, original.sellIn)
     }
+
+    func test_valuesRemainUnchanged_whenExpiredAndZeroQuality() {
+        // Given
+        let original = Bet(name: "Winning team", sellIn: 0, quality: 0)
+        var bet = original
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, original.quality)
+        XCTAssertEqual(bet.sellIn, original.sellIn)
+    }
+
+    func test_valuesRemainUnchanged_whenExpiredAndMaxQuality() {
+        // Given
+        let original = Bet(name: "Winning team", sellIn: -5, quality: 50)
+        var bet = original
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, original.quality)
+        XCTAssertEqual(bet.sellIn, original.sellIn)
+    }
+
 }

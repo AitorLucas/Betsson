@@ -38,22 +38,6 @@ final class BetRepositoryTests: XCTestCase {
         // Then
         XCTAssertEqual(updated.count, 4)
         XCTAssertEqual(service.savedBets, updated)
-
-//        let player = updated[0]
-//        XCTAssertEqual(player.quality, 50)
-//        XCTAssertEqual(player.sellIn, 0)
-//
-//        let total = updated[1]
-//        XCTAssertEqual(total.quality, 48) // +3
-//        XCTAssertEqual(total.sellIn, 4)
-//
-//        let yellow = updated[2]
-//        XCTAssertEqual(yellow.sellIn, -1)
-//        XCTAssertEqual(yellow.quality, 8) // down by 2
-//
-//        let red = updated[3]
-//        XCTAssertEqual(red.sellIn, 4)
-//        XCTAssertEqual(red.quality, 9) // Standard rule
     }
 
     func test_updateOdds_appliesRulesAndSavesThem_OriginalValues() async throws {
@@ -66,6 +50,50 @@ final class BetRepositoryTests: XCTestCase {
         // Then
         XCTAssertEqual(updated.count, 16)
         XCTAssertEqual(service.savedBets, updated)
+    }
+
+    func test_legacyProcessorIsEqualToNew_OriginalValues() async throws {
+        // Given
+        let legacyRepository = BetRepository(service: service, ruleProcessor: LegacyRuleProcessor())
+        service.saveOriginalsBets()
+
+        // When
+        let sutUpdated = try await sut.updateOdds()
+        let legacyUpdated = try await legacyRepository.updateOdds()
+
+        // Then
+        XCTAssertEqual(sutUpdated, legacyUpdated)
+    }
+
+    func test_legacyProcessorIsEqualToNew_RandomValues() async throws {
+        // Given
+        let legacyRepository = BetRepository(service: service, ruleProcessor: LegacyRuleProcessor())
+        service.betsToLoad = [
+            Bet(name: "Winning team", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Total score", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Player performance", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "First goal scorer", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Number of fouls", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Corner kicks", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Yellow cards", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Red cards", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Offsides", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Penalties", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Half-time score", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Clean sheet", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Hat trick", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Number of sets won", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Number of aces", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "Set score", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50)),
+            Bet(name: "NEW TYPE", sellIn: Int.random(in: -10...10), quality: Int.random(in: -50...50))
+        ]
+
+        // When
+        let sutUpdated = try await sut.updateOdds()
+        let legacyUpdated = try await legacyRepository.updateOdds()
+
+        // Then
+        XCTAssertEqual(sutUpdated, legacyUpdated)
     }
 
 }

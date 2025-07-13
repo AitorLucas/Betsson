@@ -23,7 +23,7 @@ final class PlayerPerformanceRuleTests: XCTestCase {
         originalBetValue = nil
     }
 
-    func test_qualityIncreases_by1_whenSellInPositive() {
+    func test_qualityIncreasesBy1_whenSellInPositive() {
         // Given
         var bet = Bet(name: "Player performance", sellIn: 5, quality: 10)
 
@@ -57,4 +57,53 @@ final class PlayerPerformanceRuleTests: XCTestCase {
         // Then
         XCTAssertEqual(bet.quality, 50)
     }
+
+    func test_qualityRemains50_whenAlreadyAtMaxBeforeExpiration() {
+        // Given
+        var bet = Bet(name: "Player performance", sellIn: 5, quality: 50)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, 50)
+        XCTAssertEqual(bet.sellIn, 4)
+    }
+
+    func test_qualityIncreasesBy1_whenAt49_andExpired() {
+        // Given
+        var bet = Bet(name: "Player performance", sellIn: 0, quality: 49)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, 50)
+        XCTAssertEqual(bet.sellIn, -1)
+    }
+
+    func test_qualityRemains50_whenAlreadyAtMaxAndExpired() {
+        // Given
+        var bet = Bet(name: "Player performance", sellIn: 0, quality: 50)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, 50)
+        XCTAssertEqual(bet.sellIn, -1)
+    }
+
+    func test_negativeQuality_doesNotIncreasePastLimit() {
+        // Given
+        var bet = Bet(name: "Player performance", sellIn: 3, quality: -5)
+
+        // When
+        sut.apply(to: &bet)
+
+        // Then
+        XCTAssertEqual(bet.quality, -4)
+    }
+
 }
+

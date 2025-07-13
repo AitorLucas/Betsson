@@ -13,14 +13,21 @@ public protocol BetService {
 public class BetRepository {
 
     private let service: BetService
-    private let ruleProcessor: BetRuleProcessor
+    private let ruleProcessor: BetRuleProcessable
 
-    public init(service: BetService, ruleProcessor: BetRuleProcessor? = nil) {
+    public init(service: BetService, ruleProcessor: BetRuleProcessable? = nil) {
         self.service = service
         self.ruleProcessor = ruleProcessor ?? BetRuleProcessor()
     }
 
+    var bool = false
+
     public func updateOdds() async throws -> [Bet] {
+//        if bool {
+//            throw NSError(domain: "", code: 0, userInfo: nil)
+//        }
+//        bool.toggle()
+
         var bets = try await service.loadBets()
         bets = ruleProcessor.process(bets: bets)
         try await service.saveBets(bets)
@@ -28,62 +35,4 @@ public class BetRepository {
         return bets
     }
 
-//    internal func og(bets: [Bet]) -> [Bet] {
-//        var bets = bets
-//
-//        for i in 0 ..< bets.count {
-//            if bets[i].name != "Player performance",
-//               bets[i].name != "Total score" {
-//                if bets[i].quality > 0 {
-//                    if bets[i].name != "Winning team" {
-//                        bets[i].quality = bets[i].quality - 1
-//                    }
-//                }
-//            } else {
-//                if bets[i].quality < 50 {
-//                    bets[i].quality = bets[i].quality + 1
-//
-//                    if bets[i].name == "Total score" {
-//                        if bets[i].sellIn < 11 {
-//                            // Unnecessary
-//                            if bets[i].quality < 50 {
-//                                bets[i].quality = bets[i].quality + 1
-//                            }
-//                        }
-//
-//                        if bets[i].sellIn < 6 {
-//                            // Unnecessary
-//                            if bets[i].quality < 50 {
-//                                bets[i].quality = bets[i].quality + 1
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//            if bets[i].name != "Winning team" {
-//                bets[i].sellIn = bets[i].sellIn - 1
-//            }
-//
-//            if bets[i].sellIn < 0 {
-//                if bets[i].name != "Player performance" {
-//                    if bets[i].name != "Total score" {
-//                        if bets[i].quality > 0 {
-//                            if bets[i].name != "Winning team" {
-//                                bets[i].quality = bets[i].quality - 1
-//                            }
-//                        }
-//                    } else {
-//                        bets[i].quality = bets[i].quality - bets[i].quality
-//                    }
-//                } else {
-//                    if bets[i].quality < 50 {
-//                        bets[i].quality = bets[i].quality + 1
-//                    }
-//                }
-//            }
-//        }
-//
-//        return bets
-//    }
 }

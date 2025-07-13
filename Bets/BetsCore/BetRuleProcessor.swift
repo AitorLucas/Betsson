@@ -7,23 +7,23 @@
 
 import Foundation
 
-public class BetRuleProcessor {
+public protocol BetRuleProcessable {
+    func process(bets: [Bet]) -> [Bet]
+}
+
+internal class BetRuleProcessor: BetRuleProcessable {
 
     private var ruleSet: [BetType: any BetRule.Type] = [
         .playerPerformance: PlayerPerformanceRule.self,
         .totalScore: TotalScoreRule.self,
-        .yellowCards: YellowCardsRule.self,
         .winningTeam: WinningTeamRule.self
     ]
 
     public func process(bets: [Bet]) -> [Bet] {
         return bets.map { bet in
             var mutableBet = bet
-            if let rule = ruleSet[bet.type] {
-                rule.apply(to: &mutableBet)
-            } else {
-                StandardBetRule.apply(to: &mutableBet)
-            }
+            let rule = ruleSet[bet.type] ?? StandardBetRule.self
+            rule.apply(to: &mutableBet)
             return mutableBet
         }
     }
@@ -31,7 +31,6 @@ public class BetRuleProcessor {
 }
 
 // MARK: - BetRule
-
-public protocol BetRule {
+internal protocol BetRule {
     static func apply(to bet: inout Bet)
 }

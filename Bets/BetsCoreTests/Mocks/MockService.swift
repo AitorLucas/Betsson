@@ -7,12 +7,12 @@
 
 import BetsCore
 
-final class MockService: BetService {
+internal final class MockService: BetService {
 
-    var betsToLoad: [Bet] = []
-    var savedBets: [Bet] = []
+    internal var betsToLoad: [Bet] = []
+    internal var savedBets: [Bet] = []
 
-    func saveOriginalsBets() {
+    internal func saveOriginalsBets() {
         betsToLoad = [
             Bet(name: "Winning team", sellIn: 8, quality: 15),
             Bet(name: "Total score", sellIn: 5, quality: 26),
@@ -33,11 +33,11 @@ final class MockService: BetService {
         ]
     }
 
-    func loadBets() async throws -> [Bet] {
+    internal func loadBets() async throws -> [Bet] {
         return betsToLoad
     }
 
-    func saveBets(_ bets: [Bet]) async throws {
+    internal func saveBets(_ bets: [Bet]) async throws {
         savedBets = bets
     }
 
