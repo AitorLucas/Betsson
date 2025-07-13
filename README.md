@@ -36,6 +36,7 @@ The app fetches betting odds and updates the UI accordingly. Bets have dynamic o
 - [x] Loading animation with transitions
 - [x] Icon and selection support in cells
 - [x] Error message for failed loads
+- [x] Labels for Quality and Sell-In
 
 ## Author
 
