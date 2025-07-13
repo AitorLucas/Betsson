@@ -105,7 +105,7 @@ extension BetsListCell: ViewCode {
             stackView.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             stackView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 6),
             stackView.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
         ])
     }
 
