@@ -15,14 +15,16 @@ protocol ViewCode {
 }
 
 extension ViewCode {
-    func setupView() {
+
+    internal func setupView() {
         configureView()
         buildHierarchy()
         setupConstraints()
         buildAccessibility()
     }
 
-    func buildAccessibility() {
+    internal func buildAccessibility() {
         // Empty
     }
+
 }

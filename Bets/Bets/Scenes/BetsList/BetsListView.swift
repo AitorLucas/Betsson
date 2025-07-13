@@ -8,11 +8,11 @@
 import UIKit
 import BetsCore
 
-protocol BetsListViewDelegate: AnyObject {
+internal protocol BetsListViewDelegate: AnyObject {
     func didSelect(cellModel: BetsListCellModelProtocol)
 }
 
-final internal class BetsListView: UIView {
+internal final class BetsListView: UIView {
 
     // MARK: UI
     private let collectionView: UICollectionView = {
@@ -20,18 +20,21 @@ final internal class BetsListView: UIView {
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.registerCell(type: BetsListCell.self)
+        collectionView.isHidden = true
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
 
     private let activityIndicatorView: UIActivityIndicatorView = {
         let activity = UIActivityIndicatorView(style: .medium)
+        activity.isHidden = true
         activity.translatesAutoresizingMaskIntoConstraints = false
         return activity
     }()
 
     private let errorLabel: UILabel = {
         let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 18)
         label.textColor = .label.withAlphaComponent(0.7)
         label.textAlignment = .center
         label.text = "Error fetching items"
@@ -41,8 +44,10 @@ final internal class BetsListView: UIView {
     }()
 
     // MARK: Properties
-    internal weak var delegate: BetsListViewDelegate?
     private var viewModel: BetsListModelProtocol?
+    private var currentState: ViewState?
+    private var transitionID = UUID()
+    internal weak var delegate: BetsListViewDelegate?
 
     // MARK: Life Cycle
     @available(*, unavailable)
@@ -56,31 +61,49 @@ final internal class BetsListView: UIView {
     }
 
     // MARK: Methods
-    internal func startLoading() {
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.collectionView.alpha = 0
-            self?.errorLabel.alpha = 0
+    private func transition(to newState: ViewState) {
+        guard newState != currentState else { return }
+        currentState = newState
+
+        let thisTransitionID = UUID()
+        transitionID = thisTransitionID
+
+        let views: [(view: UIView, shouldShow: Bool)] = [
+            (collectionView, newState == .content),
+            (activityIndicatorView, newState == .loading),
+            (errorLabel, newState == .error)
+        ]
+
+        views.forEach { $0.view.isHidden = false }
+
+        UIView.animate(withDuration: 0.2) {
+            views.forEach { view, shouldShow in
+                view.alpha = shouldShow ? 1 : 0
+            }
         } completion: { [weak self] _ in
-            self?.activityIndicatorView.startAnimating()
-            self?.collectionView.isHidden = true
-            self?.errorLabel.isHidden = true
+            guard let self = self,
+                  self.transitionID == thisTransitionID else { return }
+            views.forEach { view, shouldShow in
+                view.isHidden = !shouldShow
+            }
+            if newState == .loading {
+                self.activityIndicatorView.startAnimating()
+            } else {
+                self.activityIndicatorView.stopAnimating()
+            }
         }
     }
 
-    internal func stopLoading() {
-        collectionView.isHidden = false
-        UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.activityIndicatorView.stopAnimating()
-            self?.collectionView.alpha = 1
-        }
+    internal func startLoading() {
+        transition(to: .loading)
     }
 
     internal func showError() {
-        collectionView.isHidden = true
-        errorLabel.isHidden = false
+        transition(to: .error)
     }
 
     internal func updateView(with viewModel: BetsListModelProtocol) {
+        transition(to: .content)
         self.viewModel = viewModel
         collectionView.reloadData()
     }
@@ -119,7 +142,7 @@ extension BetsListView: ViewCode {
         NSLayoutConstraint.activate([
             errorLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 32),
             errorLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -32),
-            errorLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
+            errorLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
 
@@ -128,11 +151,11 @@ extension BetsListView: ViewCode {
 // MARK: - UICollectionView DataSource
 extension BetsListView: UICollectionViewDataSource {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    internal func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.cellModels.count ?? 0
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    internal func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cellModel = viewModel?.cellModels[indexPath.item],
               let cell = collectionView.dequeueCell(type: BetsListCell.self, for: indexPath) else {
             return UICollectionViewCell()
@@ -146,7 +169,7 @@ extension BetsListView: UICollectionViewDataSource {
 // MARK: - UICollectionView Delegate
 extension BetsListView: UICollectionViewDelegate {
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    internal func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cellModel = viewModel?.cellModels[indexPath.item] else { return }
         delegate?.didSelect(cellModel: cellModel)
     }

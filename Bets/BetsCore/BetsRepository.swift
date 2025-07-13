@@ -13,21 +13,14 @@ public protocol BetService {
 public class BetRepository {
 
     private let service: BetService
-    private let ruleProcessor: BetRuleProcessable
+    private let ruleProcessor: BetRuleProcessorProtocol
 
-    public init(service: BetService, ruleProcessor: BetRuleProcessable? = nil) {
+    public init(service: BetService, ruleProcessor: BetRuleProcessorProtocol? = nil) {
         self.service = service
         self.ruleProcessor = ruleProcessor ?? BetRuleProcessor()
     }
 
-    var bool = false
-
     public func updateOdds() async throws -> [Bet] {
-//        if bool {
-//            throw NSError(domain: "", code: 0, userInfo: nil)
-//        }
-//        bool.toggle()
-
         var bets = try await service.loadBets()
         bets = ruleProcessor.process(bets: bets)
         try await service.saveBets(bets)

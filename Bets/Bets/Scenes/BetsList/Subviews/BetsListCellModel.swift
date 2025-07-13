@@ -13,11 +13,12 @@ internal protocol BetsListCellModelProtocol {
     var imageName: String { get }
 }
 
-struct BetsListCellModel: BetsListCellModelProtocol {
-    let title: String
-    let imageName: String
+internal struct BetsListCellModel: BetsListCellModelProtocol {
 
-    init(bet: Bet) {
+    internal let title: String
+    internal let imageName: String
+
+    internal init(bet: Bet) {
         self.title = bet.name
 
         switch bet.type {

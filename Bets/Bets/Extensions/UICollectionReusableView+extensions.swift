@@ -9,7 +9,7 @@ import UIKit
 
 extension UICollectionReusableView {
 
-    static var identifier: String {
+    internal static var identifier: String {
         return String(describing: self)
     }
 

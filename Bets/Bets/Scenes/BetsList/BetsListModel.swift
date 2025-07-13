@@ -13,9 +13,11 @@ internal protocol BetsListModelProtocol {
 }
 
 struct BetsListModel: BetsListModelProtocol {
-    let cellModels: [BetsListCellModelProtocol]
 
-    init(bets: [Bet]) {
+    internal let cellModels: [BetsListCellModelProtocol]
+
+    internal init(bets: [Bet]) {
         self.cellModels = bets.map({ BetsListCellModel(bet: $0) })
     }
+    
 }

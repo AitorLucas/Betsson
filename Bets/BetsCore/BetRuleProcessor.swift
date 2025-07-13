@@ -7,11 +7,11 @@
 
 import Foundation
 
-public protocol BetRuleProcessable {
+public protocol BetRuleProcessorProtocol {
     func process(bets: [Bet]) -> [Bet]
 }
 
-internal class BetRuleProcessor: BetRuleProcessable {
+internal class BetRuleProcessor: BetRuleProcessorProtocol {
 
     private var ruleSet: [BetType: any BetRule.Type] = [
         .playerPerformance: PlayerPerformanceRule.self,

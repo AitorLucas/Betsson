@@ -7,7 +7,7 @@
 
 @testable import BetsCore
 
-internal final class LegacyRuleProcessor: BetRuleProcessable {
+internal final class LegacyRuleProcessor: BetRuleProcessorProtocol {
 
     internal func process(bets: [Bet]) -> [Bet] {
         var bets = bets

@@ -8,7 +8,7 @@
 import UIKit
 import BetsCore
 
-final internal class BetsListViewController: UIViewController {
+internal final class BetsListViewController: UIViewController {
 
     // MARK: Properties
     private let repository = BetRepository(service: RemoteBetService())
@@ -30,7 +30,6 @@ final internal class BetsListViewController: UIViewController {
 
     internal override func viewDidLoad() {
         super.viewDidLoad()
-
         loadData()
     }
 
@@ -44,10 +43,8 @@ final internal class BetsListViewController: UIViewController {
                 await MainActor.run { [weak self] in
                     let viewModel = BetsListModel(bets: items)
                     self?.customView.updateView(with: viewModel)
-                    self?.customView.stopLoading()
                 }
             } catch {
-                customView.stopLoading()
                 customView.showError()
             }
         }
@@ -58,7 +55,7 @@ final internal class BetsListViewController: UIViewController {
 // MARK: - BetsListView Delegate
 extension BetsListViewController: BetsListViewDelegate {
 
-    func didSelect(cellModel: any BetsListCellModelProtocol) {
+    internal func didSelect(cellModel: any BetsListCellModelProtocol) {
         print("Selected: \(cellModel)")
     }
 
