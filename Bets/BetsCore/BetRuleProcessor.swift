@@ -29,8 +29,3 @@ internal class BetRuleProcessor: BetRuleProcessorProtocol {
     }
 
 }
-
-// MARK: - BetRule
-internal protocol BetRule {
-    static func apply(to bet: inout Bet)
-}

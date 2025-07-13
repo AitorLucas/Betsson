@@ -8,7 +8,9 @@
 import Foundation
 
 internal class WinningTeamRule: BetRule {
+
     internal static func apply(to bet: inout Bet) {
         // Empty
     }
+
 }

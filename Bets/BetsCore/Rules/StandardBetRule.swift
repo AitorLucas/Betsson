@@ -8,6 +8,7 @@
 import Foundation
 
 internal class StandardBetRule: BetRule {
+
     internal static func apply(to bet: inout Bet) {
         if bet.quality > 0 {
             bet.quality -= 1
@@ -20,4 +21,5 @@ internal class StandardBetRule: BetRule {
             bet.quality -= 1
         }
     }
+
 }

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B20E2EC2E2460EF0025F1EB /* BetRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20E2EB2E2460EF0025F1EB /* BetRule.swift */; };
+		5B20E2EE2E2461100025F1EB /* BetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20E2ED2E2461100025F1EB /* BetService.swift */; };
+		5B20E2F02E2461470025F1EB /* BetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20E2EF2E2461470025F1EB /* BetType.swift */; };
 		5B9530902E21AD1D0085FEFB /* BetRuleProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B95308F2E21AD1C0085FEFB /* BetRuleProcessor.swift */; };
 		5B9530A92E21B9670085FEFB /* BetsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9530A82E21B9670085FEFB /* BetsRepositoryTests.swift */; };
 		B5C0FD5C29E69206009AD7E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5C0FD5B29E69206009AD7E4 /* AppDelegate.swift */; };
@@ -58,6 +61,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5B20E2EB2E2460EF0025F1EB /* BetRule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetRule.swift; sourceTree = "<group>"; };
+		5B20E2ED2E2461100025F1EB /* BetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetService.swift; sourceTree = "<group>"; };
+		5B20E2EF2E2461470025F1EB /* BetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetType.swift; sourceTree = "<group>"; };
 		5B95308F2E21AD1C0085FEFB /* BetRuleProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetRuleProcessor.swift; sourceTree = "<group>"; };
 		5B9530A82E21B9670085FEFB /* BetsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetsRepositoryTests.swift; sourceTree = "<group>"; };
 		B5C0FD5829E69206009AD7E4 /* Bets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +158,9 @@
 				B5C0FD9029E6950A009AD7E4 /* BetsRepository.swift */,
 				5B95308F2E21AD1C0085FEFB /* BetRuleProcessor.swift */,
 				B5C0FD9229E69531009AD7E4 /* Bet.swift */,
+				5B20E2EF2E2461470025F1EB /* BetType.swift */,
+				5B20E2EB2E2460EF0025F1EB /* BetRule.swift */,
+				5B20E2ED2E2461100025F1EB /* BetService.swift */,
 			);
 			path = BetsCore;
 			sourceTree = "<group>";
@@ -333,6 +342,9 @@
 			files = (
 				B5C0FD9129E6950A009AD7E4 /* BetsRepository.swift in Sources */,
 				B5C0FD9329E69531009AD7E4 /* Bet.swift in Sources */,
+				5B20E2EC2E2460EF0025F1EB /* BetRule.swift in Sources */,
+				5B20E2EE2E2461100025F1EB /* BetService.swift in Sources */,
+				5B20E2F02E2461470025F1EB /* BetType.swift in Sources */,
 				5B9530902E21AD1D0085FEFB /* BetRuleProcessor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

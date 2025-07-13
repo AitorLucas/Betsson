@@ -8,6 +8,7 @@
 import Foundation
 
 internal class PlayerPerformanceRule: BetRule {
+
     internal static func apply(to bet: inout Bet) {
         if bet.quality < 50 {
             bet.quality += 1
@@ -20,4 +21,5 @@ internal class PlayerPerformanceRule: BetRule {
             bet.quality += 1
         }
     }
+
 }

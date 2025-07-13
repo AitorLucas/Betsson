@@ -5,10 +5,7 @@
 //  Created by Aitor Eler Lucas on 10/07/25.
 //
 
-public protocol BetService {
-    func loadBets() async throws -> [Bet]
-    func saveBets(_ bets: [Bet]) async throws
-}
+import Foundation
 
 public class BetRepository {
 
